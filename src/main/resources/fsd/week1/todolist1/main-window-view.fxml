@@ -20,7 +20,7 @@
 
     <Text fx:id="setRandomName" text="Your randomly generated name will appear here" GridPane.rowIndex="2" GridPane.columnIndex="1" style="-fx-font-weight: bold;" GridPane.valignment="CENTER" GridPane.halignment="CENTER" >
         <font>
-            <Font name="Segoe UI" size="15" />
+            <Font name="Segoe UI" size="25" />
         </font>
     </Text>
 
