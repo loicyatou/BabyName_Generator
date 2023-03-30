@@ -18,7 +18,7 @@
     </font>
     </Text>
 
-    <Text text="Your randomly generated name will appear here" GridPane.rowIndex="2" GridPane.columnIndex="1" style="-fx-font-weight: bold;" GridPane.valignment="CENTER" GridPane.halignment="CENTER" >
+    <Text fx:id="setRandomName" text="Your randomly generated name will appear here" GridPane.rowIndex="2" GridPane.columnIndex="1" style="-fx-font-weight: bold;" GridPane.valignment="CENTER" GridPane.halignment="CENTER" >
         <font>
             <Font name="Segoe UI" size="15" />
         </font>
@@ -30,7 +30,7 @@
         </font>
     </Label>
 
-    <ChoiceBox  GridPane.rowIndex="4"  GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+    <ChoiceBox fx:id="genderOptions"  GridPane.rowIndex="4"  GridPane.columnIndex="1" GridPane.halignment="CENTER" onAction="#onChoiceClick"/>
 
     <Label text="By Ethnicity" GridPane.rowIndex="5" GridPane.columnIndex="1" GridPane.valignment="CENTER" GridPane.halignment="CENTER">
         <font>
@@ -38,7 +38,9 @@
         </font>
     </Label>
 
-    <ChoiceBox  GridPane.rowIndex="6"  GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+    <ChoiceBox fx:id="ethnicityOptions" GridPane.rowIndex="6"  GridPane.columnIndex="1" GridPane.halignment="CENTER" onAction="#onChoiceClick" />
+
+    <Button fx:id="startGenerate" styleClass="button" text="Generate Random Name" GridPane.rowIndex="7" GridPane.columnIndex="1" GridPane.halignment="CENTER" onAction="#onButtonClick" />
 
 
 

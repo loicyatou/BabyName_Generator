@@ -2,7 +2,9 @@ package fsd.week1.todolist1.datamodel;
 
 import java.security.SecureRandom;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class generateDetails {
     private String name;
@@ -21,7 +23,10 @@ public class generateDetails {
     private String query;
 
 
-    private HashMap<Integer, String> ethnicitiesHM = new HashMap<>();
+    private List<String> ethnicitiesHM = new ArrayList<>();
+
+    private List<String> gendersHM = new ArrayList<>();
+
 
     private Statement statement = null;
     private ResultSet resultSet = null;
@@ -37,6 +42,9 @@ public class generateDetails {
 
     //keep this just so that it doesnt use the above super constructor.
     public generateDetails() {
+        gendersHM.add(null);
+        gendersHM.add("MALE");
+        gendersHM.add("FEMALE");
     }
 
     //generate random details. I could have forced this all into one method using multiple if statements depending on the input
@@ -170,7 +178,7 @@ public class generateDetails {
        randomNumber = randomNum.nextInt(upperBound);
     }
 
-    public HashMap<Integer, String> grabEthnicitiesFromDB(){
+    public List<String> loadEthnicities(){
         try{
             //query through the database to find the lowest value so that you can create a new range of random values. it would have been easier with the basic random class but I wanted to coninue using the secure random method
             dataBaseConnection.establishConnection();
@@ -181,11 +189,10 @@ public class generateDetails {
             String query = "select ethnicity from babynames";
             resultSet = statement.executeQuery(query);
 
-            int i = 0;
+            ethnicitiesHM.add(null);
             while(resultSet.next()){
-                i++;
-                if(!ethnicitiesHM.containsValue(resultSet.getString("ethnicity"))){
-                    ethnicitiesHM.put(i,resultSet.getString("ethnicity"));
+                if(!ethnicitiesHM.contains(resultSet.getString("ethnicity"))){
+                    ethnicitiesHM.add(resultSet.getString("ethnicity"));
                 }
             }
 
@@ -208,113 +215,7 @@ public class generateDetails {
         return ethnicitiesHM;
     }
 
-
-    //doing it with a CSV file as opposed to a database
-
-//        public String getRandomName() {
-//        //get random number
-//        genRandomNumber();
-//        Path path = Paths.get(file);
-//        String line;
-//
-//        try {
-//            BufferedReader br = Files.newBufferedReader(path);
-//            int iteration = 0; //skip header line
-//            while ((line = br.readLine()) != null) {
-//                String[] tempA = line.split( ",\\s*");
-//
-//                //find that number as we loop through file
-//                if(iteration == 0){
-//                    iteration++;
-//                    continue;
-//                } else if(Integer.parseInt(tempA[0]) == randomNumber) {
-//                    id = Integer.parseInt(tempA[0]);
-//                    yearOfBirth = Integer.parseInt(tempA[1]);
-//                    gender = tempA[2];
-//                    Ethnicity = tempA[3];
-//                    name = tempA[4];
-//                    count = Integer.parseInt(tempA[5]);
-//                    break;
-//                }
-//            }
-//        } catch (Exception e) {
-//            System.out.println("There was an issue when accessing the baby name database ");
-//        }
-//
-//        return name;
-//    }
-
-//    public String getRandomNameBasedOfEthnicity(String ethnicity){
-//        Path path = Paths.get(file);
-//        String line;
-//        int iteration = 0; //skip header line
-//
-//        int numEth =0;
-//
-//        try{
-//            BufferedReader br = Files.newBufferedReader(path);
-//            while((line = br.readLine()) != null){
-//
-//                if(iteration == 0) {
-//                    iteration++;
-//                    continue;
-//                }
-//                String[] tempA = line.split(",\\s*");
-//                Ethnicity = tempA[3];
-//                name = tempA[4];
-//                //improvement is to think about how to stop it once you've found all of your target to increase speed
-//                if(Ethnicity.equals(ethnicity)){
-//                    numEth++;
-//                    babyNameMap.put(numEth, name);
-//                }
-//            }
-//        } catch (Exception e){
-//            System.out.println("There was an issue when accessing the baby name database ");
-//        }
-//
-//        //create a new range of values to randomly select from
-//        int upperBound = babyNameMap.size();
-//        randomNumber = randomNum.nextInt(upperBound);
-//
-//        name = babyNameMap.get(randomNumber);
-//        return name;
-//    }
-//
-//    public String getRandomNameBasedOfGender(String gen){
-//        Path path = Paths.get(file);
-//        String line;
-//        int iteration = 0; //skip header line
-//
-//        int numGen =0;
-//
-//        try{
-//            BufferedReader br = Files.newBufferedReader(path);
-//            while((line = br.readLine()) != null){
-//
-//                if(iteration == 0) {
-//                    iteration++;
-//                    continue;
-//                }
-//
-//                String[] tempA = line.split(",\\s*");
-//                gender = tempA[2];
-//                name = tempA[4];
-//                //improvement is to think about how to stop it once you've found all of your target to increase speed
-//                if(gender.equals(gen)){
-//                    numGen++;
-//                    babyNameMap.put(numGen, name);
-//                }
-//            }
-//        } catch (Exception e){
-//            System.out.println("There was an issue when accessing the baby name database ");
-//        }
-//
-//        //create a new range of values to randomly select from
-//        int upperBound = babyNameMap.size();
-//        randomNumber = randomNum.nextInt(upperBound);
-//        name = babyNameMap.get(randomNumber);
-//
-//        return name;
-//
-//    }
+    public List<String> getGendersHM() {
+        return gendersHM;
+    }
 }

@@ -21,10 +21,10 @@ public class Main extends Application {
         stage.setTitle("Baby Name Generator");
         stage.setScene(scene); //grabs the fxml file and loads it onto the window stage.
         stage.show(); //makes the scene visible
+        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
     }
 
     public static void main(String[] args) {
-        System.out.println(test.grabEthnicitiesFromDB());
         launch();
     }
 }
