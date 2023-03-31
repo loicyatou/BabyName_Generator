@@ -13,6 +13,7 @@ public class Controller {
 
     @FXML
     public Button startGenerate;
+    public Button chartGender;
     String randomName;
     @FXML
     public ChoiceBox ethnicityOptions;
