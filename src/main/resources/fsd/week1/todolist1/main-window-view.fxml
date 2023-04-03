@@ -55,8 +55,7 @@
         </font>
     </Label>
     <HBox style="-fx-spacing: 20;" GridPane.rowIndex="9" GridPane.columnIndex="0" GridPane.halignment="CENTER" alignment="CENTER">
-        <Button text="Gender" GridPane.rowIndex="9" GridPane.halignment="CENTER" />
-        <Button text="Ethnicity" GridPane.rowIndex="9" GridPane.halignment="CENTER" />
-        <Button text="Ranking" GridPane.rowIndex="9" GridPane.halignment="CENTER" />
+        <Button text="2016's Top 10 Male Names" GridPane.rowIndex="9" GridPane.halignment="CENTER" onAction="#showChartDialog" />
+        <Button text="2016's Top 10 Female Names" GridPane.rowIndex="9" GridPane.halignment="CENTER" onAction="#showChartDialogFemale" />
     </HBox>
 </GridPane>

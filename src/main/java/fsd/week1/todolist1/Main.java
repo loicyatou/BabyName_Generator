@@ -1,12 +1,9 @@
 package fsd.week1.todolist1;
 
-import fsd.week1.todolist1.datamodel.generateDetails;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
 import javafx.stage.Stage;
 
 import java.io.IOException;

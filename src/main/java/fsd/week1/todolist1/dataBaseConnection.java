@@ -1,4 +1,4 @@
-package fsd.week1.todolist1.datamodel;
+package fsd.week1.todolist1;
 
 import java.sql.*;
 

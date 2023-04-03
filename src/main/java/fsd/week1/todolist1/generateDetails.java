@@ -1,9 +1,8 @@
-package fsd.week1.todolist1.datamodel;
+package fsd.week1.todolist1;
 
 import java.security.SecureRandom;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class generateDetails {
